@@ -32,7 +32,7 @@ public class TestService {
     @Produces(MediaType.APPLICATION_JSON)
     public Users getTrackInJSON() {
 
-        Users user = new Users("John","NY",25);
+        Users user = new Users("John","NY");
         return user;
 
     }

@@ -16,14 +16,17 @@ public class TestJPA {
         EntityManagerFactory factory;
         factory = Persistence.createEntityManagerFactory(UNIT_NAME);
         EntityManager em = factory.createEntityManager();
-        Users v1 = new Users("kolya","moskow",30);
-        Users v2 = new Users("masha","dnepr",20);
+        //Foods v1 = new Foods("potato",12,13,14,123,"garnir");
+        Users user = new Users("BlackCat","666");
+        Users_info us = new Users_info(user,"Kyiv",60,170);
+
 
 
 
         em.getTransaction().begin();
-        em.persist(v1);
-        em.persist(v2);
+        em.persist(user);
+        em.persist(us);
+     //   em.persist(v2);
 
 
      //System.out.println(em.find(User.class,1));
@@ -47,6 +50,7 @@ public class TestJPA {
         for (Users p : list){
             System.out.println(p);
         }
+
 
 
 
