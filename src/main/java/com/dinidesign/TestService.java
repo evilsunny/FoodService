@@ -5,6 +5,8 @@ import com.sun.net.httpserver.HttpServer;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import java.io.IOException;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
 import javax.ws.rs.GET;
@@ -30,11 +32,26 @@ public class TestService {
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Users getTrackInJSON() {
+    public UsersEntity getTrackInJSON() {
 
-        Users user = new Users("John","NY");
+        UsersEntity user = new UsersEntity();
+        user.setLogin("KON`");
+        user.setPassword("123");
         return user;
+    }
 
+    @GET
+    @Path("/testheader")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getVersion(@Context HttpHeaders headers){
+        if (headers != null) {
+            for (String header : headers.getRequestHeaders().keySet()) {
+                System.out.println("Header:"+header+
+                        "Value:"+headers.getRequestHeader(header));
+            }
+        }
+
+        return Response.status(200).entity("OK").build();
     }
 
 
@@ -42,7 +59,7 @@ public class TestService {
     @POST
     @Path("/post")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createTrackInJSON(Users user) {
+    public Response createTrackInJSON(UsersEntity user) {
         System.out.print(user);
         String result = "Track saved : " + user;
         return Response.status(201).entity(result).build();

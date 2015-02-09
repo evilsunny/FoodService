@@ -9,10 +9,13 @@
         <property name="hbm2ddl.auto">create</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.username">cat</property>
-        <property name="hibernate.connection.password">catcatcat</property>
         <property name="show_sql">true</property>
         <mapping class="com.dinidesign.Users"/>
+        <mapping class="com.dinidesign.ActivitiesEntity"/>
+        <mapping class="com.dinidesign.FoodsEntity"/>
+        <mapping class="com.dinidesign.MealsEntity"/>
+        <mapping class="com.dinidesign.UsersEntity"/>
+        <mapping class="com.dinidesign.UsersInfoEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

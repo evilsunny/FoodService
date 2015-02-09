@@ -17,7 +17,7 @@ public class TestClient {
     @POST
     @Path("/post")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createTrackInJSON(Users user) {
+    public Response createTrackInJSON(UsersEntity user) {
 
         String result = "Track saved : " + user;
         return Response.status(201).entity(result).build();
